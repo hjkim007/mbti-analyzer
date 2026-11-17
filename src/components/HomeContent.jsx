@@ -8,6 +8,7 @@ import PremiumInputWizard from "@/components/PremiumInputWizard";
 import PaymentModal from "@/components/PaymentModal";
 import LoadingScreen from "@/components/LoadingScreen";
 import ResultScreen from "@/components/ResultScreen";
+import labStyles from "@/components/ResultLabTheme.module.css";
 import useAnalysis from "@/hooks/useAnalysis";
 import usePayment from "@/hooks/usePayment";
 import { getDeviceId } from "@/lib/device-id";
@@ -298,12 +299,16 @@ export default function HomeContent() {
   return (
     <div
       className={
-        useWarmShell ? "min-h-screen mbti-warm-shell" : "min-h-screen"
+        useWarmShell
+          ? "min-h-screen mbti-warm-shell"
+          : analysis.stage === "result"
+            ? labStyles.shell
+            : "min-h-screen"
       }
     >
       <Header freeRemaining={freeRemaining} onGoHome={analysis.reset} />
 
-      <main className="max-w-lg mx-auto px-4 pb-24 relative">
+      <main className={`${analysis.stage === "result" ? "max-w-2xl" : "max-w-lg"} mx-auto px-4 pb-24 relative`}>
         {isDevModeClient() && (
           <div
             className="mt-3 rounded-xl border border-amber-400/60 bg-amber-50/90 px-3 py-2 text-center text-[11px] text-amber-900"
@@ -445,3 +450,4 @@ export default function HomeContent() {
     </div>
   );
 }
+

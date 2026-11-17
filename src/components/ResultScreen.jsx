@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import GlassCard from "./GlassCard";
 import ReadableBlock from "./ReadableBlock";
+import LabResultHero from "./LabResultHero";
+import labStyles from "./ResultLabTheme.module.css";
 import { getMbtiMeta } from "@/constants/mbti-data";
 import {
   ANALYSIS_MODE,
@@ -107,6 +109,7 @@ function partitionAxisEvidence(forEvidence, againstEvidence) {
 function ClickBadge() {
   return (
     <span
+      data-lab-click
       className="inline-flex shrink-0 items-center rounded-[6px] px-1.5 py-0.5 text-[11px] font-bold"
       style={{
         background: "rgba(180,120,0,0.13)",
@@ -135,6 +138,7 @@ function AxisGaugeBar({ open, confPct }) {
   return (
     <div className="mb-3.5 h-3 w-full overflow-hidden rounded-full bg-amber-100/90">
       <div
+        data-lab-gauge
         className="h-full rounded-full"
         style={{
           width: `${w}%`,
@@ -177,6 +181,8 @@ function GoldAccordion({ idPrefix, open, onToggle, title, children }) {
         id={panelId}
         role="region"
         aria-labelledby={triggerId}
+        aria-hidden={!open}
+        inert={!open}
         className="overflow-hidden"
         style={{
           maxHeight: open ? ACCORDION_MAX_H : 0,
@@ -408,6 +414,8 @@ export default function ResultScreen({
           />
         </div>
       )}
+      {normalizeMbtiCode(mbtiType) && (
+      <>
       <div
         className="rounded-2xl overflow-hidden shadow-md w-full border anim-slide-up"
         style={{
@@ -450,6 +458,8 @@ export default function ResultScreen({
       <p className="text-center text-xs text-gray-500 mt-2 mb-1">
         가장 유력한 후보입니다
       </p>
+      </>
+      )}
       {isPremium && confidenceReason?.trim() && (
         <div className="text-[11px] text-gray-600 px-2 mt-2 max-w-md mx-auto text-left">
           <p className="font-bold text-gray-700 mb-1.5 text-center">
@@ -466,23 +476,16 @@ export default function ResultScreen({
   );
 
   return (
-    <div className="pt-6">
-      {/* 분석 티어 뱃지 */}
-      <div className="text-center mb-4 anim-slide-up">
-        <span
-          className="text-xs font-bold px-4 py-1.5 rounded-full shadow-sm"
-          style={{
-            background: isPremium
-              ? "linear-gradient(90deg,rgba(162,155,254,0.5),rgba(124,58,237,0.25))"
-              : "linear-gradient(90deg,rgba(254,229,0,0.8),rgba(162,155,254,0.3))",
-            color: "#333",
-          }}
-        >
-          {isPremium
-            ? "✨ Premium · 심층 리포트"
-            : "🎁 Free · 빠른 추정"}
-        </span>
-      </div>
+    <div className={labStyles.report} data-mindpick-lab-result>
+      <LabResultHero
+        mbtiType={normalizeMbtiCode(mbtiType) || candidateRows.find((row) => normalizeMbtiCode(row.type))?.type}
+        targetName={targetName}
+        title={title}
+        conclusion={oneLineConclusion}
+        confidenceLevel={confidenceLevel}
+        isPremium={isPremium}
+        tags={tags}
+      />
 
       {(isMulti || hasMemo) && (
         <div className="text-center mb-4 anim-slide-up">
@@ -673,6 +676,8 @@ export default function ResultScreen({
                       id={panelId}
                       role="region"
                       aria-labelledby={`axis-trigger-${key}`}
+                      aria-hidden={!open}
+                      inert={!open}
                       className="overflow-hidden"
                       style={{
                         maxHeight: open ? ACCORDION_MAX_H : 0,
@@ -919,7 +924,7 @@ export default function ResultScreen({
       )}
 
       {/* MBTI 메인 카드 — 레거시 상단 강조 */}
-      {!useEvidenceLayout && (
+      {!useEvidenceLayout && normalizeMbtiCode(mbtiType) && (
       <div
         className="rounded-3xl overflow-hidden shadow-xl mb-4 anim-slide-up delay-1"
         style={{
@@ -1829,6 +1834,7 @@ export default function ResultScreen({
           다시 분석하기
         </button>
         <button
+          data-lab-action="primary"
           className="flex-1 py-4 rounded-2xl font-bold text-gray-900 active:scale-95 transition-transform text-sm shadow-lg"
           style={{ background: "#FEE500" }}
           onClick={() => {
@@ -1881,6 +1887,7 @@ export default function ResultScreen({
           <button
             type="button"
             onClick={onGoPremium}
+            data-lab-action="upgrade"
             className="w-full py-4 rounded-2xl font-extrabold text-sm text-gray-900 shadow-lg active:scale-[0.99] transition-transform border-2 border-purple-200"
             style={{
               background:
@@ -1898,3 +1905,4 @@ export default function ResultScreen({
     </div>
   );
 }
+
