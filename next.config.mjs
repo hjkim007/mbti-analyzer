@@ -72,6 +72,13 @@ const nextConfig = {
    * @see https://nextjs.org/docs/app/api-reference/config/next-config-js/htmlLimitedBots
    */
   htmlLimitedBots: /.*/,
+  /**
+   * 분석 지침서는 런타임에 파일로 읽으므로 배포 번들에 꼭 포함시킨다.
+   * (빠지면 /api/analyze 가 "분석 지침서 섹션 누락" 오류를 냄)
+   */
+  outputFileTracingIncludes: {
+    "/api/analyze": ["./docs/mbti_skills_v2.md"],
+  },
 };
 
 export default nextConfig;
