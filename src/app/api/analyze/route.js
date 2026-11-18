@@ -57,11 +57,11 @@ function sanitizeRelationship(v) {
 }
 
 /**
- * 프리미엄: 다중 이미지·긴 JSON 생성 시 60초를 넘길 수 있음.
- * Vercel Hobby는 플랜상 최대 60초로 제한될 수 있음 → 그 경우 Hobby에서는
- * 타임아웃이 날 수 있으니 Pro 이상 또는 self-host에서 120 권장.
+ * 단계별 분석(유료: 추출 → 판단 → 작성 3회 호출)이라 2분을 넘길 수 있음.
+ * 파이프라인 자체 예산: 무료 110초, 유료 285초 (src/lib/analysis-pipeline.js TOTAL_BUDGET).
+ * Vercel에서 300초를 쓰려면 플랜·Fluid Compute 설정의 최대 실행 시간을 확인할 것.
  */
-export const maxDuration = 120;
+export const maxDuration = 300;
 
 export async function POST(request) {
   const devMode = isDevModeServer();
