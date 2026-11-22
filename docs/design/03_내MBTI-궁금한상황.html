@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>너궁그매 스캐너 · 궁금한 상황 입력</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;600;700;800&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#64517f}a:hover{color:#242b29}
+.ty{font:inherit;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;min-height:44px;border-radius:10px;border:1px solid #dcded3;background:#fffefa;color:#242b29;padding:0}
+.chip{font:inherit;font-size:12px;min-height:40px;padding:0 14px;border-radius:10px;border:1px solid #dcded3;background:#fffefa;color:#242b29}
+.lab{margin:0 0 10px;font-size:13px;font-weight:700}
+</style>
+</head>
+<body>
+<div style="width: 390px; min-height: 1240px; box-sizing: border-box; background: #f8f7f2; color: #242b29; font-family: 'Noto Sans KR', 'DM Sans', sans-serif; word-break: keep-all; display: flex; flex-direction: column; padding: 18px 20px 24px">
+
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #6b6f6a">
+<button type="button" style="font: inherit; font-size: 13px; color: #5f645e; background: none; border: 0; padding: 10px 0; min-height: 44px">← 이전</button>
+<span style="font-size: 11px; font-weight: 600; background: #776398; color: #ffffff; border-radius: 20px; padding: 4px 10px">관계 해석 · 마지막 단계</span>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 6px">
+<div><div style="height: 3px; border-radius: 5px; background: #bab0cc"></div><p style="margin: 7px 0 0; font-size: 10px; color: #6b6f6a">캡처</p></div>
+<div><div style="height: 3px; border-radius: 5px; background: #bab0cc"></div><p style="margin: 7px 0 0; font-size: 10px; color: #6b6f6a">관계</p></div>
+<div><div style="height: 3px; border-radius: 5px; background: #bab0cc"></div><p style="margin: 7px 0 0; font-size: 10px; color: #6b6f6a">행동 7문항</p></div>
+<div><div style="height: 3px; border-radius: 5px; background: #bab0cc"></div><p style="margin: 7px 0 0; font-size: 10px; color: #6b6f6a">메모</p></div>
+<div><div style="height: 3px; border-radius: 5px; background: #776398"></div><p style="margin: 7px 0 0; font-size: 10px; font-weight: 700; color: #64517f">나 · 상황</p></div>
+</div>
+
+<h1 style="margin: 26px 0 0; font-size: 24px; line-height: 1.45; font-weight: 700; letter-spacing: -1px">이제 내 이야기를<br>들려주세요</h1>
+<p style="margin: 10px 0 0; font-size: 13px; line-height: 1.8; color: #5f645e">내 성향과 궁금한 장면을 알면, 그 사람의 속마음과 내가 할 수 있는 말을 같이 찾아드려요.</p>
+
+<div style="margin-top: 26px">
+<p class="lab">내 MBTI</p>
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px">
+<button type="button" class="ty" aria-pressed="true" style="background: #242b29; color: #ffffff; border-color: #242b29">ISTJ</button>
+<button type="button" class="ty">ISFJ</button><button type="button" class="ty">INFJ</button><button type="button" class="ty">INTJ</button>
+<button type="button" class="ty">ISTP</button><button type="button" class="ty">ISFP</button><button type="button" class="ty">INFP</button><button type="button" class="ty">INTP</button>
+<button type="button" class="ty">ESTP</button><button type="button" class="ty">ESFP</button><button type="button" class="ty">ENFP</button><button type="button" class="ty">ENTP</button>
+<button type="button" class="ty">ESTJ</button><button type="button" class="ty">ESFJ</button><button type="button" class="ty">ENFJ</button><button type="button" class="ty">ENTJ</button>
+</div>
+<button type="button" style="font: inherit; margin-top: 6px; font-size: 12px; color: #64517f; background: none; border: 0; padding: 8px 0; min-height: 40px">내 MBTI를 잘 모르겠어요 →</button>
+</div>
+
+<div style="margin-top: 14px">
+<p class="lab">이 관계에서 바라는 것</p>
+<div style="display: flex; flex-wrap: wrap; gap: 7px">
+<button type="button" class="chip" aria-pressed="true" style="background: #242b29; color: #ffffff; border-color: #242b29">더 가까워지고 싶어요</button>
+<button type="button" class="chip">오해를 풀고 싶어요</button>
+<button type="button" class="chip">편하게 지내고 싶어요</button>
+<button type="button" class="chip">거리를 두고 싶어요</button>
+</div>
+</div>
+
+<div style="margin-top: 26px; background: #fffefa; border: 1px solid #e5e5de; border-radius: 16px; padding: 16px">
+<div style="display: flex; justify-content: space-between; align-items: center">
+<label for="sit1" class="lab" style="margin: 0">궁금한 상황 1</label>
+<span style="font-size: 11px; color: #6b6f6a">72 / 300</span>
+</div>
+<textarea id="sit1" style="font: inherit; margin-top: 10px; width: 100%; box-sizing: border-box; min-height: 104px; border: 1px solid #dcded4; border-radius: 10px; padding: 12px 13px; font-size: 13px; line-height: 1.75; color: #242b29; background: #fffefa; resize: vertical">‘이번 주말 어때?’ 했더니 ‘음 생각해볼게’ 하고 답이 없어요. 싫다는 걸까요? 저는 날짜를 확실히 정하고 싶었어요.</textarea>
+<div style="display: flex; align-items: center; gap: 10px; margin-top: 10px">
+<div style="width: 44px; height: 60px; border-radius: 8px; background: #c9d8e6; border: 1px solid #b9cadb; display: flex; flex-direction: column; gap: 4px; padding: 7px 5px; box-sizing: border-box"><div style="height: 5px; width: 70%; background: #ffffff; border-radius: 3px"></div><div style="height: 5px; width: 55%; background: #fee500; border-radius: 3px; margin-left: auto"></div><div style="height: 5px; width: 60%; background: #ffffff; border-radius: 3px"></div></div>
+<p style="margin: 0; font-size: 12px; line-height: 1.6; color: #5f645e">이 장면의 캡처 1장 첨부됨<br><span style="color: #6b6f6a; font-size: 11px">없어도 돼요 · 있으면 더 정확해요</span></p>
+</div>
+</div>
+
+<button type="button" style="font: inherit; margin-top: 10px; min-height: 52px; border-radius: 14px; border: 1.5px dashed #b5a4cb; background: transparent; color: #64517f; font-size: 13px; font-weight: 600">+ 궁금한 상황 하나 더 (최대 2개)</button>
+
+<div style="margin-top: 16px; background: #ecefe5; border-radius: 12px; padding: 13px 15px">
+<p style="margin: 0; font-size: 12px; line-height: 1.75; color: #545d4f">이렇게 쓰면 좋아요: <b>무슨 일이 있었는지 → 내 의도는 뭐였는지 → 무엇이 궁금한지</b></p>
+</div>
+
+<div style="margin-top: auto; padding-top: 24px">
+<button type="button" style="font: inherit; width: 100%; min-height: 54px; border-radius: 12px; border: 0; background: #776398; color: #ffffff; font-size: 15px; font-weight: 700">4,900원 결제하고 해석 받기</button>
+<p style="margin: 10px 0 0; font-size: 11px; color: #6b6f6a; text-align: center">심층 리포트를 이미 받았다면 3,000원만 결제돼요</p>
+</div>
+</div>
+</body>
+</html>
