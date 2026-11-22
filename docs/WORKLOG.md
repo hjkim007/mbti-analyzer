@@ -8,3 +8,4 @@
 - 한 일: 시안 7장 내보내기(PNG → 프로젝트 파일, HTML·PNG → GitHub PR #3), 현황·로드맵 갱신
 - 한 일: 엔진 v2 실제 테스트 시작 → Supabase 휴면 복구, DB 누락 3가지(analysis_mode 칸, portone_payment 칸, 횟수 함수) 보정. 엔진은 결과 생성까지 성공 확인, 저장까지 재테스트 대기
 - 연결: Claude가 GitHub·Vercel·Supabase 직접 작업 가능해짐 (포트원은 연결 도구 없음)
+- 결정(마케팅): 업로드는 완전 자동 전까지 Claude가 브라우저로 예약 업로드, 유튜브 API 심사 통과 후 n8n 완전 자동 (API 직접 업로드는 심사 전엔 비공개로 잠김)
